@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import idb from "../idb";
+import '../componentsStyle/CostsForm.css'
 
 function CostForm() {
   const [sum, setSum] = useState("");
@@ -34,7 +35,7 @@ function CostForm() {
   };
 
   return (
-    <div>
+    <div className='costs-form'>
       <h2>Add New Cost</h2>
       <form onSubmit={handleSubmit}>
         <div>

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import idb from "../idb";
 import DateForm from "./DateForm";
-
+import '../componentsStyle/Report.css';
 async function fetchDataFromIndexedDB(db) {
   try {
     return await idb.getAllCosts(db);
@@ -47,12 +47,13 @@ function Report() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Generate Report</h2>
       <DateForm onSelectedDate={handleSelectedDate} />
       <button onClick={handleGenerateReport}>Generate Report</button>
       <div>
-        <h3>Cost Items</h3>
+        <br/><br/>
+        <h3>Report</h3>
         <ul>
           {reportData.map((costItem, index) => (
             <li key={index}>

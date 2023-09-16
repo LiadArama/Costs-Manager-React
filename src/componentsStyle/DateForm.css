@@ -1,0 +1,108 @@
+.date-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: 250px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.date-form-container label {
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    color: #333;
+}
+
+.date-form-container input {
+    width: 90%;
+    position: relative;
+    padding: 7px;
+    border: 2px solid #e0e0e0;
+    border-radius: 11px;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease;
+    text-align: center;
+}
+
+.date-form-container input:focus {
+    border-color: #4CAF50;
+}
+
+
+
+/*.date-form-container {*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center; !* This will center the child items horizontally since the direction is column *!*/
+/*}*/
+
+/*.date-form-container label {*/
+/*    margin-bottom: 10px;*/
+/*    font-size: 16px;*/
+/*    color: #333;*/
+/*}*/
+
+/*.date-form-container input {*/
+/*    width: 100%;*/
+/*    max-width: 250px; !* You can adjust this value based on your design needs *!*/
+/*    padding: 7px;*/
+/*    border: 2px solid #e0e0e0;*/
+/*    border-radius: 11px;*/
+/*    font-size: 14px;*/
+/*    color: #333;*/
+/*    outline: none;*/
+/*    transition: border-color 0.3s ease;*/
+/*    margin: 0 auto; !* This will center the input *!*/
+/*    display: block; !* This ensures the input takes up the full width of its container *!*/
+/*}*/
+
+/*.date-form-container input:hover {*/
+/*    border-color: #007BFF;*/
+/*}*/
+
+/* DateForm.css */
+
+/*.date-form-container {*/
+/*    padding: 20px; !* Add padding to give space inside the box *!*/
+/*    margin: 20px 0; !* Add margin to give space outside the box *!*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    border: 1px solid #e0e0e0; !* Add a border for the box *!*/
+/*    border-radius: 12px; !* Rounded corners for the box *!*/
+/*    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); !* A subtle shadow for depth *!*/
+/*    width: fit-content; !* Makes the box only as wide as its content *!*/
+/*    background-color: #f9f9f9; !* A light background color for the box *!*/
+/*}*/
+
+/*.date-form-container label {*/
+/*    margin-bottom: 10px;*/
+/*    font-size: 16px;*/
+/*    color: #333;*/
+/*}*/
+
+/*.date-form-container input {*/
+/*    width: 100%;*/
+/*    max-width: 250px;*/
+/*    padding: 7px;*/
+/*    border: 2px solid #e0e0e0;*/
+/*    border-radius: 11px;*/
+/*    font-size: 14px;*/
+/*    color: #333;*/
+/*    outline: none;*/
+/*    transition: border-color 0.3s ease;*/
+/*    margin: 0 auto;*/
+/*    display: block;*/
+/*}*/
+
+/*.date-form-container input:hover {*/
+/*    border-color: #007BFF;*/
+/*}*/

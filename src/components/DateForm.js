@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import '../componentsStyle/DateForm.css'
 
 function DateForm({ onSelectedDate }){
     const getCurrentDateLimit = () => {
@@ -23,13 +23,13 @@ function DateForm({ onSelectedDate }){
         onSelectedDate(event.target.value);
     }
 
-    return(
-        <div>
+    return (
+        <div className="date-form-container">
             <label htmlFor="date-range">Choose Year and Month</label>
-            <br/>
-            <input type="month" id="date-range" name="date-range"  onChange={handleDateChange}  min="2020-01" max={maxDateToGet} value={date}/>
+            <input type="month" id="date-range" name="date-range" onChange={handleDateChange} min="2020-01" max={maxDateToGet} value={date} />
         </div>
     );
+
 }
 
 export default DateForm;

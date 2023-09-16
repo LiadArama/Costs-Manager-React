@@ -1,0 +1,56 @@
+div {
+    box-sizing: border-box;
+}
+
+/* Form container styling */
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form fields styling */
+form div {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+    width: 90%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+.costs-form button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.costs-form button:hover {
+    background-color: #0056b3;
+}
