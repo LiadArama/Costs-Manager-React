@@ -8,17 +8,28 @@ function CostForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const db = await idb.openCostsDB("costsdb", 1);
-      const result = await idb.addCost(db, { sum, category, description });
-      console.log("Adding cost succeeded:", result);
-      // Clear the form
+    if(sum === null || sum === '0'){
+      alert("Need to specify amount!");
       setSum("");
       setCategory("FOOD");
       setDescription("");
-    } catch (error) {
-      console.error("Error adding cost:", error);
+    } else if(sum < 0){
+      alert("A negative number is not an valid!");
+      setSum("");
+      setCategory("FOOD");
+      setDescription("");
+    } else {
+      try {
+        const db = await idb.openCostsDB("costsdb", 1);
+        const result = await idb.addCost(db, {sum, category, description});
+        console.log("Adding cost succeeded:", result);
+        // Clear the form
+        setSum("");
+        setCategory("FOOD");
+        setDescription("");
+      } catch (error) {
+        console.error("Error adding cost:", error);
+      }
     }
   };
 

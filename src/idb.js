@@ -1,5 +1,5 @@
 const idb = {
-  openCostsDB: async (dbName, version) => {
+  openCostsDB:  (dbName, version) => {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open(dbName, version);
 
@@ -21,7 +21,7 @@ const idb = {
     });
   },
 
-  addCost: async (db, costData) => {
+  addCost:  (db, costData) => {
     costData.timestamp = new Date().toISOString(); // Add timestamp
     return new Promise((resolve, reject) => {
       const transaction = db.transaction("costs", "readwrite");
@@ -38,7 +38,7 @@ const idb = {
     });
   },
 
-  getAllCosts: async (db) => {
+  getAllCosts:  (db) => {
     return new Promise((resolve, reject) => {
       const transaction = db.transaction("costs", "readonly");
       const store = transaction.objectStore("costs");
@@ -54,7 +54,7 @@ const idb = {
     });
   },
 
-  deleteCost: async (db, id) => {
+  deleteCost:  (db, id) => {
     return new Promise((resolve, reject) => {
       const transaction = db.transaction("costs", "readwrite");
       const store = transaction.objectStore("costs");

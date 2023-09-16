@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import idb from "../idb";
-import DateRangeSelector from "./DateRangeSelector";
+import DateForm from "./DateForm";
 
 async function fetchDataFromIndexedDB(db) {
   try {
-    const costs = await idb.getAllCosts(db);
-    return costs;
+    return await idb.getAllCosts(db);
   } catch (error) {
     console.error("Error fetching data from IndexedDB:", error);
     return [];
@@ -14,21 +13,23 @@ async function fetchDataFromIndexedDB(db) {
 
 function Report() {
   const [reportData, setReportData] = useState([]);
-  const [selectedDateRange, setSelectedDateRange] = useState(null);
+  const [selectedDate, setSelectedDate] = useState("");
 
-  const handleGenerateReport = async (startDate, endDate) => {
+
+  const handleSelectedDate = async (date) => {
+    setSelectedDate(date);
+  }
+  const handleGenerateReport = async () => {
     try {
       const db = await idb.openCostsDB("costsdb", 1);
       const costItems = await fetchDataFromIndexedDB(db);
-
       // Filter costItems based on startDate and endDate
       const filteredCostItems = costItems.filter((item) => {
-        const itemDate = new Date(item.timestamp);
-        return itemDate >= startDate && itemDate <= endDate;
+        return item.timestamp.includes(selectedDate);
       });
 
       setReportData(filteredCostItems);
-      setSelectedDateRange({ startDate, endDate });
+
     } catch (error) {
       console.error("Error generating report:", error);
     }
@@ -47,16 +48,16 @@ function Report() {
 
   return (
     <div>
-      <DateRangeSelector onSelectDateRange={handleGenerateReport} />
       <h2>Generate Report</h2>
+      <DateForm onSelectedDate={handleSelectedDate} />
       <button onClick={handleGenerateReport}>Generate Report</button>
       <div>
         <h3>Cost Items</h3>
         <ul>
           {reportData.map((costItem, index) => (
             <li key={index}>
-              Date: {new Date(costItem.timestamp).toLocaleString()}, Sum:
-              {costItem.sum}, Category: {costItem.category}, Description:
+              Date: {new Date(costItem.timestamp).toLocaleDateString()}, Sum:
+               {costItem.sum}, Category: {costItem.category}, Description:
               {costItem.description}
               <button onClick={() => handleDeleteCost(costItem.id)}>
                 Delete
