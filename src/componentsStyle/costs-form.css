@@ -1,8 +1,11 @@
+/*
+* Code submitted by - Yuval Berkovich - 209329218, Liad Arama - 206484719, Mor Revah - 205971179
+* */
+
 div {
     box-sizing: border-box;
 }
 
-/* Form container styling */
 form {
     max-width: 400px;
     margin: 50px auto;
@@ -17,11 +20,9 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Form fields styling */
 form div {
     margin-bottom: 20px;
 }
-
 label {
     display: block;
     margin-bottom: 8px;

@@ -1,5 +1,4 @@
-
-  const openCostsDB = (dbName, version) => {
+const openCostsDB = (dbName, version) => {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open(dbName, version);
 

@@ -15,7 +15,7 @@ function CostsForm() {
       setCategory('FOOD');
       setDescription('');
     } else if(sum < 0){
-      alert('A negative number is not an valid!');
+      alert('A negative number is not valid!');
       setSum('');
       setCategory('FOOD');
       setDescription('');
@@ -24,7 +24,6 @@ function CostsForm() {
         const db = await idb.openCostsDB("costsdb", 1);
         const result = await db.addCost({sum, category, description});
         console.log("Adding cost succeeded:", result);
-        // Clear the form
         setSum('');
         setCategory('FOOD');
         setDescription('');
@@ -57,7 +56,7 @@ function CostsForm() {
             >
               <option value='FOOD'>Food</option>
               <option value='HEALTH'>Health</option>
-              <option value='EDUCATIO'>Education</option>
+              <option value='EDUCATION'>Education</option>
               <option value='TRAVEL'>Travel</option>
               <option value='HOUSING'>Housing</option>
               <option value='OTHER'>Other</option>
