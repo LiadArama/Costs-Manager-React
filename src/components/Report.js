@@ -27,7 +27,7 @@ function Report() {
       const filteredCostItems = costItems.filter((item) => {
         return item.timestamp.includes(selectedDate);
       });
-
+      filteredCostItems.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
       setReportData(filteredCostItems);
 
     } catch (error) {
@@ -35,34 +35,22 @@ function Report() {
     }
   };
 
-  const handleDeleteCost = async (id) => {
-    try {
-      const db = await idb.openCostsDB("costsdb", 1);
-      await idb.deleteCost(db, id);
-      const updatedData = await fetchDataFromIndexedDB(db);
-      setReportData(updatedData);
-    } catch (error) {
-      console.error("Error deleting cost:", error);
-    }
-  };
 
   return (
     <div className="container">
       <h2>Generate Report</h2>
       <DateForm onSelectedDate={handleSelectedDate} />
       <button onClick={handleGenerateReport}>Generate Report</button>
+      <br/><br/>
+      <h3>Report</h3>
       <div>
-        <br/><br/>
-        <h3>Report</h3>
         <ul>
           {reportData.map((costItem, index) => (
             <li key={index}>
-              Date: {new Date(costItem.timestamp).toLocaleDateString()}, Sum:
-               {costItem.sum}, Category: {costItem.category}, Description:
-              {costItem.description}
-              <button onClick={() => handleDeleteCost(costItem.id)}>
-                Delete
-              </button>
+              <b>Date:</b> {new Date(costItem.timestamp).toLocaleDateString('en-GB', {day: '2-digit', month: '2-digit', year: 'numeric'})}<br/>
+              <b>Amount:</b> {Number.parseFloat(costItem.sum).toLocaleString()}<br/>
+              <b>Category:</b> {costItem.category}<br/>
+              <b>Description:</b> {costItem.description}
             </li>
           ))}
         </ul>

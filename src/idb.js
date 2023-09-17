@@ -53,24 +53,6 @@ const idb = {
       };
     });
   },
-
-  deleteCost:  (db, id) => {
-    return new Promise((resolve, reject) => {
-      const transaction = db.transaction("costs", "readwrite");
-      const store = transaction.objectStore("costs");
-
-      // eslint-disable-next-line no-unused-vars
-      const request = store.delete(id);
-
-      transaction.oncomplete = () => {
-        resolve();
-      };
-
-      transaction.onerror = (event) => {
-        reject(event.target.error);
-      };
-    });
-  },
 };
 
 export default idb;
