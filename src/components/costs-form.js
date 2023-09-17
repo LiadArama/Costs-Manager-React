@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {idb} from '../idb';
-import '../componentsStyle/CostsForm.css'
+import '../componentsStyle/costs-form.css'
 
 function CostsForm() {
   const [sum, setSum] = useState('');

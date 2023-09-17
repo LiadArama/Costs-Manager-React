@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {idb} from '../idb';
 import DateForm from './date-form';
-import '../componentsStyle/Report.css';
+import '../componentsStyle/report.css';
 
 async function fetchDataFromIndexedDB(dbObject) {
   try {

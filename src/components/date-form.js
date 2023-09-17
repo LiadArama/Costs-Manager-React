@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../componentsStyle/DateForm.css'
+import '../componentsStyle/date-form.css'
 
 function DateForm({ onSelectedDate }){
     const getCurrentDateLimit = () => {
