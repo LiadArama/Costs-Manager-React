@@ -1,12 +1,13 @@
-import React, {useState} from "react";
-import idb from "../idb";
-import DateForm from "./DateForm";
+import React, {useState} from 'react';
+import {idb} from '../idb';
+import DateForm from './date-form';
 import '../componentsStyle/Report.css';
-async function fetchDataFromIndexedDB(db) {
+
+async function fetchDataFromIndexedDB(dbObject) {
   try {
-    return await idb.getAllCosts(db);
+    return await dbObject.getAllCosts();
   } catch (error) {
-    console.error("Error fetching data from IndexedDB:", error);
+    console.error('Error fetching data from IndexedDB:', error);
     return [];
   }
 }
@@ -21,9 +22,8 @@ function Report() {
   }
   const handleGenerateReport = async () => {
     try {
-      const db = await idb.openCostsDB("costsdb", 1);
-      const costItems = await fetchDataFromIndexedDB(db);
-      // Filter costItems based on startDate and endDate
+      const dbObject = await idb.openCostsDB('costsdb', 1);
+      const costItems = await fetchDataFromIndexedDB(dbObject);
       const filteredCostItems = costItems.filter((item) => {
         return item.timestamp.includes(selectedDate);
       });
@@ -31,13 +31,13 @@ function Report() {
       setReportData(filteredCostItems);
 
     } catch (error) {
-      console.error("Error generating report:", error);
+      console.error('Error generating report:', error);
     }
   };
 
 
   return (
-    <div className="container">
+    <div className='container'>
       <h2>Generate Report</h2>
       <DateForm onSelectedDate={handleSelectedDate} />
       <button onClick={handleGenerateReport}>Generate Report</button>

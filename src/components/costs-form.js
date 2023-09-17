@@ -1,35 +1,35 @@
-import React, { useState } from "react";
-import idb from "../idb";
+import React, { useState } from 'react';
+import {idb} from '../idb';
 import '../componentsStyle/CostsForm.css'
 
-function CostForm() {
-  const [sum, setSum] = useState("");
-  const [category, setCategory] = useState("FOOD");
-  const [description, setDescription] = useState("");
+function CostsForm() {
+  const [sum, setSum] = useState('');
+  const [category, setCategory] = useState('FOOD');
+  const [description, setDescription] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(sum === null || sum === '0'){
-      alert("Need to specify amount!");
-      setSum("");
-      setCategory("FOOD");
-      setDescription("");
+      alert('Need to specify amount!');
+      setSum('');
+      setCategory('FOOD');
+      setDescription('');
     } else if(sum < 0){
-      alert("A negative number is not an valid!");
-      setSum("");
-      setCategory("FOOD");
-      setDescription("");
+      alert('A negative number is not an valid!');
+      setSum('');
+      setCategory('FOOD');
+      setDescription('');
     } else {
       try {
         const db = await idb.openCostsDB("costsdb", 1);
-        const result = await idb.addCost(db, {sum, category, description});
+        const result = await db.addCost({sum, category, description});
         console.log("Adding cost succeeded:", result);
         // Clear the form
-        setSum("");
-        setCategory("FOOD");
-        setDescription("");
+        setSum('');
+        setCategory('FOOD');
+        setDescription('');
       } catch (error) {
-        console.error("Error adding cost:", error);
+        console.error('Error adding cost:', error);
       }
     }
   };
@@ -55,12 +55,12 @@ function CostForm() {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-              <option value="FOOD">Food</option>
-              <option value="HEALTH">Health</option>
-              <option value="EDUCATION">Education</option>
-              <option value="TRAVEL">Travel</option>
-              <option value="HOUSING">Housing</option>
-              <option value="OTHER">Other</option>
+              <option value='FOOD'>Food</option>
+              <option value='HEALTH'>Health</option>
+              <option value='EDUCATIO'>Education</option>
+              <option value='TRAVEL'>Travel</option>
+              <option value='HOUSING'>Housing</option>
+              <option value='OTHER'>Other</option>
             </select>
           </label>
         </div>
@@ -68,18 +68,18 @@ function CostForm() {
           <label>
             Description:
             <input
-              type="text"
+              type='text'
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </label>
         </div>
         <div>
-          <button type="submit">Add Cost</button>
+          <button type='submit'>Add Cost</button>
         </div>
       </form>
     </div>
   );
 }
 
-export default CostForm;
+export default CostsForm;

@@ -1,12 +1,12 @@
-const idb = {
-  openCostsDB:  (dbName, version) => {
+
+  const openCostsDB = (dbName, version) => {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open(dbName, version);
 
       request.onupgradeneeded = (event) => {
         const db = event.target.result;
-        if (!db.objectStoreNames.contains("costs")) {
-          db.createObjectStore("costs", { keyPath: "id", autoIncrement: true });
+        if (!db.objectStoreNames.contains('costs')) {
+          db.createObjectStore('costs', { keyPath: 'id', autoIncrement: true });
         }
       };
 
@@ -19,13 +19,13 @@ const idb = {
         reject(event.target.error);
       };
     });
-  },
+  }
 
-  addCost:  (db, costData) => {
+  const addCost = (db, costData) => {
     costData.timestamp = new Date().toISOString(); // Add timestamp
     return new Promise((resolve, reject) => {
-      const transaction = db.transaction("costs", "readwrite");
-      const store = transaction.objectStore("costs");
+      const transaction = db.transaction('costs', 'readwrite');
+      const store = transaction.objectStore('costs');
       const request = store.add(costData);
 
       request.onsuccess = () => {
@@ -36,12 +36,12 @@ const idb = {
         reject(request.error);
       };
     });
-  },
+  }
 
-  getAllCosts:  (db) => {
+  const getAllCosts = (db) => {
     return new Promise((resolve, reject) => {
-      const transaction = db.transaction("costs", "readonly");
-      const store = transaction.objectStore("costs");
+      const transaction = db.transaction('costs', 'readonly');
+      const store = transaction.objectStore('costs');
       const request = store.getAll();
 
       request.onsuccess = () => {
@@ -52,7 +52,19 @@ const idb = {
         reject(request.error);
       };
     });
-  },
+  }
+
+
+const idb = {
+  openCostsDB: async (dbName, version) => {
+    const dbInstance = await openCostsDB(dbName, version);
+    return {
+      instance: dbInstance,
+      addCost: (costData) => addCost(dbInstance, costData),
+      getAllCosts: () => getAllCosts(dbInstance)
+    };
+  }
 };
 
-export default idb;
+  export { idb };
+

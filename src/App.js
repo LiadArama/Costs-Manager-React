@@ -1,6 +1,6 @@
 import React from "react";
-import CostForm from "./components/CostForm";
-import Report from "./components/Report";
+import CostsForm from "./components/costs-form";
+import Report from "./components/report";
 
 
 //to deploy to github pages paste the following command:
@@ -11,7 +11,7 @@ function App() {
 
     <div>
       <h1>Costs Manager App</h1>
-      <CostForm />
+      <CostsForm />
       <Report />
     </div>
   );

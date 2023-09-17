@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import '../componentsStyle/DateForm.css'
 
 function DateForm({ onSelectedDate }){
@@ -14,7 +14,7 @@ function DateForm({ onSelectedDate }){
     const [date, setDate] = useState(getCurrentDateLimit())
     const maxDateToGet = getCurrentDateLimit();
     useEffect(() => {
-        onSelectedDate(maxDateToGet);
+        onSelectedDate(date);
     }, ); // We do this If you click submit without choosing a date, even though it says current month
     // the real value of date in Report is '' thus printing everything.
     //We need it to render once, so that's why there's no array of dependencies.
@@ -24,9 +24,9 @@ function DateForm({ onSelectedDate }){
     }
 
     return (
-        <div className="date-form-container">
-            <label htmlFor="date-range">Choose Year and Month</label>
-            <input type="month" id="date-range" name="date-range" onChange={handleDateChange} min="2020-01" max={maxDateToGet} value={date} />
+        <div className='date-form-container'>
+            <label htmlFor='date-range'>Choose Year and Month</label>
+            <input type='month' id='date-range' name='date-range' onChange={handleDateChange} min='2020-01' max={maxDateToGet} value={date} />
         </div>
     );
 
